@@ -14,7 +14,7 @@ public class MyController {
     @GetMapping(value = "/home")
     public String login(Model model){
     	model.addAttribute("messagese", "new data");
-        return "login";
+        return "home";
     }
     
     @GetMapping(value = "/login")

@@ -37,7 +37,6 @@ public class AdminController {
 		
 		Users user=new Users(id,username,String.join(",", roles));
 		adminService.Update(user);
-		System.out.println(user);
 		model.addAttribute("data", adminService.readAll());
         return "adminHome";
     }

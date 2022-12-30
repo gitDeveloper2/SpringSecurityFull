@@ -16,11 +16,13 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                hasAnyAuthority("ROLE_ADMIN").
                 .antMatchers("/webjars/**","/register/**","/addUser/**").permitAll() 
-                .antMatchers("/**").hasAuthority("ROLE_USER")
+                .antMatchers("/home/**").hasAuthority("ROLE_USER")
+                .antMatchers("/adminHome/**").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login")
                 .permitAll()
+                .successHandler(new MySuccessHandler())
                 .and()
                 .logout() .invalidateHttpSession(true)
                 .clearAuthentication(true) .permitAll();
